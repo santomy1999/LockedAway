@@ -1,29 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2et6fbxjbbi1"]
+[gd_scene load_steps=7 format=3 uid="uid://c2et6fbxjbbi1"]
 
 [ext_resource type="PackedScene" uid="uid://djspr1wows8d0" path="res://Scenes/player.tscn" id="1_imegh"]
 [ext_resource type="PackedScene" uid="uid://l8jp1klki28i" path="res://Scenes/table.tscn" id="2_ihetk"]
 [ext_resource type="PackedScene" uid="uid://duencwqsjrfsc" path="res://Scenes/box.tscn" id="3_0yevb"]
+[ext_resource type="Texture2D" uid="uid://c4b2u867cowv5" path="res://Assets/ground.png" id="3_iutw7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t0ru"]
+size = Vector2(427.327, 20.8334)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kfcs8"]
 distance = 5.0
 
 [node name="Prototype" type="Node2D"]
 
-[node name="Box" parent="." groups=["rigid body"] instance=ExtResource("3_0yevb")]
-position = Vector2(164, 451)
+[node name="Box" parent="." instance=ExtResource("3_0yevb")]
+position = Vector2(414, 453)
 collision_layer = 4
 collision_mask = 7
 
 [node name="Player" parent="." instance=ExtResource("1_imegh")]
-position = Vector2(54, 445)
-collision_layer = 4
-collision_mask = 7
+position = Vector2(131, 364)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
-[node name="Floor" type="CollisionShape2D" parent="Ground"]
+[node name="Incline" type="CollisionShape2D" parent="Ground"]
+position = Vector2(919, 600)
+rotation = -0.269523
+shape = SubResource("RectangleShape2D_3t0ru")
+
+[node name="Floor2" type="CollisionShape2D" parent="Ground"]
 position = Vector2(535, 650)
 shape = SubResource("WorldBoundaryShape2D_kfcs8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(948, 694)
+rotation = -0.274785
+texture = ExtResource("3_iutw7")
+region_enabled = true
+region_rect = Rect2(984.256, 389.252, 436.446, 259.567)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground"]
+position = Vector2(199, 754)
+rotation = -0.00971073
+texture = ExtResource("3_iutw7")
+region_enabled = true
+region_rect = Rect2(984.256, 389.252, 436.446, 259.567)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Ground"]
+position = Vector2(587, 754)
+rotation = -0.00971073
+texture = ExtResource("3_iutw7")
+region_enabled = true
+region_rect = Rect2(984.256, 389.252, 436.446, 259.567)
 
 [node name="Wall" type="StaticBody2D" parent="."]
 
